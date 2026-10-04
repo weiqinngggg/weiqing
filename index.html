@@ -55,7 +55,7 @@
     }
 
     .header h1 {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       margin-bottom: 4px;
@@ -64,9 +64,9 @@
     }
 
     .header .username {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.85);
-      font-weight: 500;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
       letter-spacing: 0.06em;
     }
 
@@ -78,16 +78,16 @@
       border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
       padding-bottom: 12px;
       margin-bottom: 28px;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
     .nav-item {
       cursor: pointer;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.7);
       transition: all 0.3s ease;
       position: relative;
       letter-spacing: 0.05em;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .nav-item:hover {
@@ -112,7 +112,7 @@
     }
 
     .nav-separator {
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.35);
       font-size: 0.85rem;
     }
 
@@ -137,17 +137,17 @@
       }
     }
 
-    /* 內文大標題與線條 */
+    /* 一級大標題 (J-POP / 愛書 / 手工) */
     .section-title {
-      font-size: 1.08rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #ffffff;
-      margin-top: 28px;
-      margin-bottom: 12px;
+      margin-top: 32px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 12px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
 
@@ -158,108 +158,55 @@
       background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
     }
 
-    /* 內文文字段落控制 */
+    /* 二級小標題 (· 作家 / · 詩人 & 詞人 / · 鉤織) */
+    .sub-section-title {
+      font-size: 1.02rem;
+      color: #ffffff;
+      font-weight: 500;
+      margin-top: 20px;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* 基礎內文說明 (0.9rem) */
     p {
       margin-bottom: 10px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      font-weight: 400;
       word-break: break-word;
       letter-spacing: 0.03em;
-      color: #e6f0fa;
+      color: rgba(230, 240, 250, 0.9);
       line-height: 1.85;
     }
 
-    /* 註解/次要說明文字 */
+    /* 補充 / 註解文字 (0.82rem) */
     p.note {
-      color: rgba(230, 240, 250, 0.8);
-      font-size: 0.88rem;
+      color: rgba(230, 240, 250, 0.7);
+      font-size: 0.82rem;
       margin-top: -2px;
       margin-bottom: 12px;
-    }
-
-    /* 分類標籤樣式 (如 ｜鉤織｜) */
-    .tag-title {
-      font-size: 0.98rem;
-      color: #ffffff;
-      font-weight: 600;
-      margin-top: 28px;
-      margin-bottom: 10px;
-      letter-spacing: 0.06em;
-      border-left: 3px solid #ffffff;
-      padding-left: 8px;
-    }
-
-    .sub-content .tag-title:first-child {
-      margin-top: 16px;
-    }
-
-    /* 子導覽列 (J-POP / 愛書 / 手工) */
-    .sub-nav {
-      display: flex;
-      gap: 24px;
-      margin-top: 16px;
-      margin-bottom: 14px;
-    }
-
-    .sub-nav-item {
-      cursor: pointer;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      letter-spacing: 0.04em;
-    }
-
-    .sub-nav-item:hover {
-      color: #ffffff;
-    }
-
-    .sub-nav-item.active {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .sub-nav-item.active::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #ffffff;
-      border-radius: 1px;
-    }
-
-    .sub-divider {
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      margin: 10px 0 18px 0;
-    }
-
-    /* 列表項目排版優化 */
-    .item-list p {
-      margin-bottom: 6px;
-      padding-left: 0px;
+      padding-left: 4px;
     }
 
     /* 底部感謝語 */
     .footer-thanks {
-      margin-top: 36px;
-      padding-top: 18px;
+      margin-top: 40px;
+      padding-top: 20px;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.85);
-      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.06em;
       text-align: center;
     }
 
     /* 手機端響應式調整 */
     @media (max-width: 480px) {
       .container {
-        padding: 32px 24px;
+        padding: 32px 22px;
       }
       .main-nav {
         gap: 12px;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
     }
   </style>
@@ -312,41 +259,29 @@
 
     <!-- 頁面 3：版面 -->
     <section id="tab-layout" class="tab-content">
-      <p style="color: rgba(255, 255, 255, 0.95);">版面內容主要涵蓋以下部分：</p>
+      <p style="color: rgba(255, 255, 255, 0.95); margin-bottom: 16px;">版面內容主要涵蓋以下部分：</p>
 
-      <!-- 子頁籤列表 -->
-      <div class="sub-nav">
-        <span class="sub-nav-item active" onclick="switchSubTab('jpop', this)">J-POP</span>
-        <span class="sub-nav-item" onclick="switchSubTab('books', this)">愛書</span>
-        <span class="sub-nav-item" onclick="switchSubTab('craft', this)">手工</span>
-      </div>
+      <!-- 區塊 1：J-POP (前方的圓點已去掉) -->
+      <div class="section-title">J-POP</div>
+      <p>YOASOBI</p>
+      <p>Hey!Say!JUMP - 山田涼介</p>
+      <p>浪花男子 - 道枝駿佑</p>
 
-      <div class="sub-divider"></div>
+      <!-- 區塊 2：愛書 -->
+      <div class="section-title">愛書</div>
+      <p>一言以蔽之是偏向喜愛女性文學，認為歷史中有刻意彰顯男性、抹滅女性的成分，並不介意被套上女性主義者的稱呼。</p>
+      
+      <div class="sub-section-title">· 作家</div>
+      <p style="padding-left: 4px;">張愛玲、簡媜、邱妙津、言叔夏、黃麗群、李屏瑤、李維菁、不朽、落涼。</p>
+      <p class="note">（也很喜歡林奕含，不過至今沒有勇氣打開她的書。）</p>
 
-      <!-- 版面子內容 - J-POP (已刪除前方的點點) -->
-      <div id="sub-jpop" class="sub-content item-list">
-        <p>YOASOBI</p>
-        <p>Hey!Say!JUMP - 山田涼介</p>
-        <p>浪花男子 - 道枝駿佑</p>
-      </div>
+      <div class="sub-section-title">· 詩人 & 詞人</div>
+      <p style="padding-left: 4px;">李清照、李商隱</p>
 
-      <!-- 版面子內容 - 愛書 -->
-      <div id="sub-books" class="sub-content" style="display: none;">
-        <p>一言以蔽之是偏向喜愛女性文學，認為歷史中有刻意彰顯男性、抹滅女性的成分，並不介意被套上女性主義者的稱呼。</p>
-        
-        <div class="tag-title">作家</div>
-        <p>張愛玲、簡媜、邱妙津、言叔夏、黃麗群、李屏瑤、李維菁、不朽、落涼。</p>
-        <p class="note">（也很喜歡林奕含，不過至今沒有勇氣打開她的書。）</p>
-
-        <div class="tag-title">詩人 & 詞人</div>
-        <p>李清照、李商隱</p>
-      </div>
-
-      <!-- 版面子內容 - 手工 -->
-      <div id="sub-craft" class="sub-content" style="display: none;">
-        <div class="tag-title">鉤織</div>
-        <p>學習中，目前到了能夠鉤點小作品的階段。</p>
-      </div>
+      <!-- 區塊 3：手工 -->
+      <div class="section-title">手工</div>
+      <div class="sub-section-title">· 鉤織</div>
+      <p style="padding-left: 4px;">學習中，目前到了能夠鉤點小作品的階段。</p>
 
       <div class="footer-thanks">
         感謝你看完，無論有沒有成為朋友都祝你生活愉快。
@@ -355,7 +290,7 @@
   </div>
 
   <script>
-    // 切換主頁籤
+    // 切換主頁籤 (關於我 / 交友 / 版面)
     function switchMainTab(tabName, element) {
       const mainContents = document.querySelectorAll('.tab-content');
       mainContents.forEach(content => content.classList.remove('active'));
@@ -365,18 +300,6 @@
 
       const targetTab = document.getElementById('tab-' + tabName);
       targetTab.classList.add('active');
-      element.classList.add('active');
-    }
-
-    // 切換版面內部的子頁籤 (J-POP / 愛書 / 手工)
-    function switchSubTab(subTabName, element) {
-      const subContents = document.querySelectorAll('.sub-content');
-      subContents.forEach(content => content.style.display = 'none');
-
-      const subNavItems = document.querySelectorAll('.sub-nav-item');
-      subNavItems.forEach(item => item.classList.remove('active'));
-
-      document.getElementById('sub-' + subTabName).style.display = 'block';
       element.classList.add('active');
     }
   </script>
