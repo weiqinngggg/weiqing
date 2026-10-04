@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你好，歡迎來到我的世界。</title>
+  
+  <!-- 引入精緻襯線體 (Noto Serif TC) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 全局樣式重置 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #9ecedc;
+      background-image: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+      color: rgba(255, 255, 255, 0.95);
+      font-family: "Noto Serif TC", "Songti TC", "Source Han Serif TC", serif;
+      font-weight: 300;
+      line-height: 1.85;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px 60px 20px;
+    }
+
+    /* 精緻毛玻璃容器卡片 */
+    .container {
+      width: 100%;
+      max-width: 580px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      padding: 42px 36px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    /* 頂部標題區域 */
+    .header {
+      padding-left: 18px;
+      border-left: 3px solid #ffffff;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .header .username {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.06em;
+    }
+
+    /* 主導覽列 (Nav) */
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+    }
+
+    .nav-item {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.65);
+      transition: all 0.3s ease;
+      position: relative;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-item:hover {
+      color: #ffffff;
+    }
+
+    .nav-item.active {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .nav-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .nav-separator {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.85rem;
+    }
+
+    /* 內容區塊與切換動畫 */
+    .tab-content {
+      display: none;
+      animation: fadeInUp 0.4s ease-out forwards;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 內文大標題與微光線條 */
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.05));
+    }
+
+    /* 內文文字段落控制 */
+    p {
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+      word-break: break-word;
+      letter-spacing: 0.03em;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.85;
+    }
+
+    /* 強調與警示文字 */
+    p .highlight {
+      color: #fff8e7;
+      font-weight: 500;
+    }
+
+    /* 註解/次要說明文字 */
+    p.note {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.86rem;
+      margin-top: -2px;
+      margin-bottom: 12px;
+    }
+
+    /* 分類標籤樣式 (如 ｜作家｜) - 已加入空行間距 */
+    .tag-title {
+      font-size: 0.95rem;
+      color: #ffffff;
+      font-weight: 500;
+      margin-top: 28px; /* 加入空行間距 */
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+      border-left: 2px solid rgba(255, 255, 255, 0.7);
+      padding-left: 8px;
+    }
+
+    .sub-content .tag-title:first-child {
+      margin-top: 16px;
+    }
+
+    /* 子導覽列 (J-POP / 愛書 / 手工) */
+    .sub-nav {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+      margin-bottom: 14px;
+    }
+
+    .sub-nav-item {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.92rem;
+      transition: all 0.3s ease;
+      position: relative;
+      letter-spacing: 0.04em;
+    }
+
+    .sub-nav-item:hover {
+      color: #ffffff;
+    }
+
+    .sub-nav-item.active {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .sub-nav-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #ffffff;
+      border-radius: 1px;
+    }
+
+    .sub-divider {
+      border-top: 1px stroke rgba(255, 255, 255, 0.2);
+      margin: 10px 0 18px 0;
+    }
+
+    /* 列表項目排版優化 */
+    .item-list p {
+      margin-bottom: 6px;
+      padding-left: 4px;
+    }
+
+    /* 底部感謝語 */
+    .footer-thanks {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    /* 手機端響應式調整 */
+    @media (max-width: 480px) {
+      .container {
+        padding: 32px 24px;
+      }
+      .main-nav {
+        gap: 12px;
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 頁頭 -->
+    <header class="header">
+      <h1>你好，歡迎來到我的世界。</h1>
+      <div class="username">@蔚晴</div>
+    </header>
+
+    <!-- 主頁籤選單 -->
+    <nav class="main-nav">
+      <span class="nav-item active" onclick="switchMainTab('about', this)">關於我</span>
+      <span class="nav-separator">/</span>
+      <span class="nav-item" onclick="switchMainTab('friend', this)">交友 / 互動方式</span>
+      <span class="nav-separator">/</span>
+      <span class="nav-item" onclick="switchMainTab('layout', this)">版面</span>
+    </nav>
+
+    <!-- 頁面 1：關於我 -->
+    <section id="tab-about" class="tab-content active">
+      <p>我是<span class="highlight">蔚晴</span>，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
+      <p>已成年，生理和心理上都是女性。</p>
+      <p>喜愛藍色、天空和海，發文時配圖常用這些。</p>
+
+      <div class="section-title">我希望你先了解的事</div>
+      <p>版面上會寫和現生女友的事，希望你不介意看這些再加我好友。</p>
+      <p>互動上請保有尊重，深入追問我的私生活會被我請出國。</p>
+    </section>
+
+    <!-- 頁面 2：交友 / 互動方式 -->
+    <section id="tab-friend" class="tab-content">
+      <div class="section-title">交友</div>
+      <p>主要看電波，有沒有同坑偏次要，加友後覺得電波沒對到、不合可以直接刪除。</p>
+      <p class="note">（註：我方不會主動刪友，被刪可直戳回來。）</p>
+      <p>婉拒 <span class="highlight">生理男、心理男</span>，非常抱歉，我會不知道如何相處。</p>
+      <p>可以直戳，怕友邀被吃的話，置頂按表情我會比較容易看見！</p>
+      <p>我喜歡你的話也可能會直戳，如有冒犯非常抱歉。</p>
+
+      <div class="section-title">互動</div>
+      <p>傾向到貼文下按表情或留言，而非一對一私訊聊天，我很容易句點你。</p>
+      <p>現生繁忙，介意雙向互動者我們可能不適合，不好意思。</p>
+
+      <div class="section-title">請注意</div>
+      <p>不會有任何安定&偏愛，默認列內有你同擔嫁。</p>
+    </section>
+
+    <!-- 頁面 3：版面 -->
+    <section id="tab-layout" class="tab-content">
+      <p style="color: rgba(255, 255, 255, 0.8);">版面內容主要涵蓋以下部分：</p>
+
+      <!-- 子頁籤列表 -->
+      <div class="sub-nav">
+        <span class="sub-nav-item active" onclick="switchSubTab('jpop', this)">J-POP</span>
+        <span class="sub-nav-item" onclick="switchSubTab('books', this)">愛書</span>
+        <span class="sub-nav-item" onclick="switchSubTab('craft', this)">手工</span>
+      </div>
+
+      <div class="sub-divider"></div>
+
+      <!-- 版面子內容 - J-POP -->
+      <div id="sub-jpop" class="sub-content item-list">
+        <p>• YOASOBI</p>
+        <p>• Hey!Say!JUMP - 山田涼介</p>
+        <p>• 浪花男子 - 道枝駿佑</p>
+      </div>
+
+      <!-- 版面子內容 - 愛書 (已加入空行，且已刪除 避雷/NG 區塊) -->
+      <div id="sub-books" class="sub-content" style="display: none;">
+        <p>一言以蔽之是偏向喜愛女性文學，認為歷史中有刻意彰顯男性、抹滅女性的成分，並不介意被套上女性主義者的稱呼。</p>
+        
+        <div class="tag-title">作家</div>
+        <p>張愛玲、簡媜、邱妙津、言叔夏、黃麗群、李屏瑤、李維菁、不朽、落涼。</p>
+        <p class="note">（也很喜歡林奕含，不過至今沒有勇氣打開她的書。）</p>
+
+        <div class="tag-title">詩人 & 詞人</div>
+        <p>李清照、李商隱</p>
+      </div>
+
+      <!-- 版面子內容 - 手工 (已刪除 水晶 標題) -->
+      <div id="sub-craft" class="sub-content" style="display: none;">
+        <div class="tag-title">鉤織</div>
+        <p>學習中，目前到了能夠鉤點小作品的階段。</p>
+        <p>近期對水晶也有興趣。</p>
+      </div>
+
+      <div class="footer-thanks">
+        感謝你看完，無論有沒有成為朋友都祝你生活愉快。
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // 切換主頁籤
+    function switchMainTab(tabName, element) {
+      const mainContents = document.querySelectorAll('.tab-content');
+      mainContents.forEach(content => content.classList.remove('active'));
+
+      const navItems = document.querySelectorAll('.main-nav .nav-item');
+      navItems.forEach(item => item.classList.remove('active'));
+
+      const targetTab = document.getElementById('tab-' + tabName);
+      targetTab.classList.add('active');
+      element.classList.add('active');
+    }
+
+    // 切換版面內部的子頁籤 (J-POP / 愛書 / 手工)
+    function switchSubTab(subTabName, element) {
+      const subContents = document.querySelectorAll('.sub-content');
+      subContents.forEach(content => content.style.display = 'none');
+
+      const subNavItems = document.querySelectorAll('.sub-nav-item');
+      subNavItems.forEach(item => item.classList.remove('active'));
+
+      document.getElementById('sub-' + subTabName).style.display = 'block';
+      element.classList.add('active');
+    }
+  </script>
+</body>
+</html>
