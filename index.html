@@ -8,7 +8,7 @@
   <!-- 引入精緻襯線體 (Noto Serif TC) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
     /* 全局樣式重置 */
@@ -19,11 +19,12 @@
     }
 
     body {
-      background-color: #b9d7ea; /* 替換為圖片的淺天空藍 */
-      background-image: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
-      color: rgba(255, 255, 255, 0.95);
+      /* 質感深藍色背景 */
+      background: linear-gradient(135deg, #1b3b5a 0%, #0b1b2b 100%);
+      background-attachment: fixed;
+      color: #ffffff;
       font-family: "Noto Serif TC", "Songti TC", "Source Han Serif TC", serif;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
       min-height: 100vh;
       display: flex;
@@ -32,18 +33,18 @@
       padding: 40px 20px 60px 20px;
     }
 
-    /* 精緻毛玻璃容器卡片 */
+    /* 毛玻璃容器卡片 */
     .container {
       width: 100%;
       max-width: 580px;
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: rgba(15, 30, 48, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 20px;
       padding: 42px 36px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04),
-                  inset 0 1px 1px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.25);
     }
 
     /* 頂部標題區域 */
@@ -54,17 +55,18 @@
     }
 
     .header h1 {
-      font-size: 1.4rem;
-      font-weight: 500;
+      font-size: 1.45rem;
+      font-weight: 600;
       letter-spacing: 0.08em;
       margin-bottom: 4px;
       color: #ffffff;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .header .username {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
       letter-spacing: 0.06em;
     }
 
@@ -73,10 +75,10 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.25);
       padding-bottom: 12px;
       margin-bottom: 28px;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
 
     .nav-item {
@@ -85,6 +87,7 @@
       transition: all 0.3s ease;
       position: relative;
       letter-spacing: 0.05em;
+      font-weight: 500;
     }
 
     .nav-item:hover {
@@ -93,19 +96,19 @@
 
     .nav-item.active {
       color: #ffffff;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .nav-item.active::after {
       content: '';
       position: absolute;
-      bottom: -13px;
+      bottom: -13.5px;
       left: 0;
       width: 100%;
-      height: 2px;
+      height: 2.5px;
       background: #ffffff;
       border-radius: 2px;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
 
     .nav-separator {
@@ -134,10 +137,10 @@
       }
     }
 
-    /* 內文大標題與微光線條 */
+    /* 內文大標題與線條 */
     .section-title {
-      font-size: 1.05rem;
-      font-weight: 500;
+      font-size: 1.08rem;
+      font-weight: 600;
       color: #ffffff;
       margin-top: 28px;
       margin-bottom: 12px;
@@ -145,48 +148,43 @@
       align-items: center;
       gap: 12px;
       letter-spacing: 0.06em;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
 
     .section-title::after {
       content: '';
       flex: 1;
-      height: 1px;
+      height: 1.5px;
       background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
     }
 
     /* 內文文字段落控制 */
     p {
       margin-bottom: 10px;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       word-break: break-word;
       letter-spacing: 0.03em;
-      color: rgba(255, 255, 255, 0.95);
+      color: #e6f0fa;
       line-height: 1.85;
-    }
-
-    /* 強調與警示文字 */
-    p .highlight {
-      color: #fff8e7;
-      font-weight: 500;
     }
 
     /* 註解/次要說明文字 */
     p.note {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.86rem;
+      color: rgba(230, 240, 250, 0.8);
+      font-size: 0.88rem;
       margin-top: -2px;
       margin-bottom: 12px;
     }
 
-    /* 分類標籤樣式 (如 ｜作家｜) */
+    /* 分類標籤樣式 (如 ｜鉤織｜) */
     .tag-title {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       color: #ffffff;
-      font-weight: 500;
+      font-weight: 600;
       margin-top: 28px;
       margin-bottom: 10px;
       letter-spacing: 0.06em;
-      border-left: 2px solid rgba(255, 255, 255, 0.8);
+      border-left: 3px solid #ffffff;
       padding-left: 8px;
     }
 
@@ -205,7 +203,8 @@
     .sub-nav-item {
       cursor: pointer;
       color: rgba(255, 255, 255, 0.75);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
+      font-weight: 500;
       transition: all 0.3s ease;
       position: relative;
       letter-spacing: 0.04em;
@@ -217,7 +216,7 @@
 
     .sub-nav-item.active {
       color: #ffffff;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .sub-nav-item.active::after {
@@ -226,20 +225,20 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 1.5px;
+      height: 2px;
       background-color: #ffffff;
       border-radius: 1px;
     }
 
     .sub-divider {
-      border-top: 1px stroke rgba(255, 255, 255, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
       margin: 10px 0 18px 0;
     }
 
     /* 列表項目排版優化 */
     .item-list p {
       margin-bottom: 6px;
-      padding-left: 4px;
+      padding-left: 0px;
     }
 
     /* 底部感謝語 */
@@ -247,7 +246,7 @@
       margin-top: 36px;
       padding-top: 18px;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: rgba(255, 255, 255, 0.85);
       letter-spacing: 0.05em;
       text-align: center;
@@ -260,7 +259,7 @@
       }
       .main-nav {
         gap: 12px;
-        font-size: 0.88rem;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -285,12 +284,12 @@
 
     <!-- 頁面 1：關於我 -->
     <section id="tab-about" class="tab-content active">
-      <p>我是<span class="highlight">蔚晴</span>，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
+      <p>我是蔚晴，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
       <p>已成年，生理和心理上都是女性。</p>
       <p>喜愛藍色、天空和海，發文時配圖常用這些。</p>
 
       <div class="section-title">我希望你先了解的事</div>
-      <p>版面上會寫和現生女友的事，希望你不介意看這些再加我好友。</p>
+      <p>版面上會寫和現生男友的事，希望你不介意看這些再加我好友。</p>
       <p>互動上請保有尊重，深入追問我的私生活會被我請出國。</p>
     </section>
 
@@ -299,7 +298,7 @@
       <div class="section-title">交友</div>
       <p>主要看電波，有沒有同坑偏次要，加友後覺得電波沒對到、不合可以直接刪除。</p>
       <p class="note">（註：我方不會主動刪友，被刪可直戳回來。）</p>
-      <p>婉拒 <span class="highlight">生理男、心理男</span>，非常抱歉，我會不知道如何相處。</p>
+      <p>婉拒生理男、心理男，非常抱歉，我會不知道如何相處。</p>
       <p>可以直戳，怕友邀被吃的話，置頂按表情我會比較容易看見！</p>
       <p>我喜歡你的話也可能會直戳，如有冒犯非常抱歉。</p>
 
@@ -313,7 +312,7 @@
 
     <!-- 頁面 3：版面 -->
     <section id="tab-layout" class="tab-content">
-      <p style="color: rgba(255, 255, 255, 0.85);">版面內容主要涵蓋以下部分：</p>
+      <p style="color: rgba(255, 255, 255, 0.95);">版面內容主要涵蓋以下部分：</p>
 
       <!-- 子頁籤列表 -->
       <div class="sub-nav">
@@ -324,11 +323,11 @@
 
       <div class="sub-divider"></div>
 
-      <!-- 版面子內容 - J-POP -->
+      <!-- 版面子內容 - J-POP (已刪除前方的點點) -->
       <div id="sub-jpop" class="sub-content item-list">
-        <p>• YOASOBI</p>
-        <p>• Hey!Say!JUMP - 山田涼介</p>
-        <p>• 浪花男子 - 道枝駿佑</p>
+        <p>YOASOBI</p>
+        <p>Hey!Say!JUMP - 山田涼介</p>
+        <p>浪花男子 - 道枝駿佑</p>
       </div>
 
       <!-- 版面子內容 - 愛書 -->
@@ -347,7 +346,6 @@
       <div id="sub-craft" class="sub-content" style="display: none;">
         <div class="tag-title">鉤織</div>
         <p>學習中，目前到了能夠鉤點小作品的階段。</p>
-        <p>近期對水晶也有興趣。</p>
       </div>
 
       <div class="footer-thanks">
